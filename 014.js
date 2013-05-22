@@ -1,4 +1,4 @@
-for (var c = [0, 1], m = 0, i = 1, t, n; i < 1000000; i++) {
+for (var c = [0, 1], m = 0, i = 1, j, t, n; i < 1000000; i++) {
   t = i
   n = 0
   while (!c[t]) {
@@ -6,7 +6,10 @@ for (var c = [0, 1], m = 0, i = 1, t, n; i < 1000000; i++) {
     n++
   }
   c[i] = c[t] + n
-  m = Math.max(m, c[i])
+  if (c[i] > m) {
+    m = c[i]
+    j = i
+  }
 }
 
-m
+j
