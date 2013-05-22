@@ -1,3 +1,5 @@
+// http://projecteuler.net/problem=14
+
 for (var c = [0, 1], m = 0, i = 1, j, t, n; i < 1000000; i++) {
   t = i
   n = 0
@@ -13,3 +15,6 @@ for (var c = [0, 1], m = 0, i = 1, j, t, n; i < 1000000; i++) {
 }
 
 j
+
+// answer: 837799
+// runtime: 494 ms

@@ -1,3 +1,5 @@
+// http://projecteuler.net/problem=2
+
 var i = 1, j = 2, sum = 0
 
 while (i < 4000000) { 
@@ -7,3 +9,6 @@ while (i < 4000000) {
 }
 
 sum
+
+// answer: 4613732
+// runtime: 11 ms

@@ -1,3 +1,5 @@
+// http://projecteuler.net/problem=3
+
 var a = 600851475143
   , b = 2
 
@@ -11,3 +13,6 @@ while (b < a) {
 }
 
 a
+
+// answer: 6857
+// runtime: 11 ms

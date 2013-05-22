@@ -1,3 +1,5 @@
+// http://projecteuler.net/problem=12
+
 var d = 0, n = 0, t, i, a
 
 while (d < 500) {
@@ -20,3 +22,6 @@ while (d < 500) {
 }
 
 n * (n + 1) / 2
+
+// answer: 76576500
+// runtime: 268 ms

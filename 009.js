@@ -1,3 +1,5 @@
+// http://projecteuler.net/problem=9
+
 (function () {
   for (var c, a = 1; a <= 998; a++) {
     for (var b = a; b <= 999 - a; b++) {
@@ -6,3 +8,6 @@
     }
   }
 })()
+
+// answer: 31875000
+// runtime: 11 ms
