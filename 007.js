@@ -1,15 +1,21 @@
 // http://projecteuler.net/problem=7
 
-var a = []
-  , i = 2
-
-while (a.length < 10001) {
-  if (!a.some(function (c) { return !(i % c) }))
-    a.push(i)
-  i++
+var ns = []
+  , c = 2
+  , n = 0
+  , i
+  
+while (n < 10001) {
+  if (!ns[c]) {
+    n++
+    for (i = 1; i <= Math.floor(2000000 / c); i++)
+      ns[i * c] = true
+  }
+  
+  c++
 }
 
-a[10000]
+c - 1
 
 // answer: 104743
-// runtime: 2040 ms
+// runtime: 268 ms
