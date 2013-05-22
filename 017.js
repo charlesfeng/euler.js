@@ -1,0 +1,15 @@
+// http://projecteuler.net/problem=17
+
+var o = [0, 3, 3, 5, 4, 4, 3, 5, 5, 4] // 0-9
+  , n = [3, 6, 6, 8, 8, 7, 7, 9, 8, 8] // 10-19
+  , t = [6, 6, 5, 5, 5, 7, 6, 6] // 20-90
+
+  , so = o.reduce(function (p, d) { return p + d }, 0) // ∑0-9
+  , sn = n.reduce(function (p, d) { return p + d }, 0) // ∑10-19
+  , st = t.reduce(function (p, d) { return p + d * 10 + so }, 0) // ∑20-99
+  , sh = o.reduce(function (p, d) { return p + (d ? (d + 7) * 100 + 3 * 99 : 0) + so + sn + st }, 0) // ∑1-999
+
+sh + 11
+
+// answer: 21124
+// runtime: 10 ms
