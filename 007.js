@@ -11,7 +11,6 @@ while (n < 10001) {
     for (i = 1; i <= Math.floor(200000 / c); i++)
       ns[i * c] = true
   }
-  
   c++
 }
 
