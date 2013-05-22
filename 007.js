@@ -8,7 +8,6 @@ var ns = []
 while (n < 10001) {
   if (!ns[c]) {
     n++
-    
     for (i = 1; i <= Math.floor(200000 / c); i++)
       ns[i * c] = true
   }
