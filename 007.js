@@ -8,7 +8,8 @@ var ns = []
 while (n < 10001) {
   if (!ns[c]) {
     n++
-    for (i = 1; i <= Math.floor(2000000 / c); i++)
+    
+    for (i = 1; i <= Math.floor(200000 / c); i++)
       ns[i * c] = true
   }
   
@@ -18,4 +19,4 @@ while (n < 10001) {
 c - 1
 
 // answer: 104743
-// runtime: 268 ms
+// runtime: 40 ms
