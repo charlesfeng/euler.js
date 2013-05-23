@@ -24,7 +24,7 @@ for (i = 2; i < 10000; i++) {
   f = []
   j = 0
   
-  while (t > 1) {
+  while (t > 1 && j < Math.sqrt(i)) {
     if (t % ps[j]) j++
     else {
       t /= ps[j]
@@ -42,4 +42,4 @@ for (i = 2; i < 10000; i++) {
 s
 
 // answer: 31626
-// runtime: 109 ms
+// runtime: 42 ms

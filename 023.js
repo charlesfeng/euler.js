@@ -1,5 +1,7 @@
 // http://projecteuler.net/problem=23
 
+var d = Date.now()
+
 var p = []
   , ps = []
   , i, j
@@ -23,7 +25,7 @@ for (i = 2; i < 28123; i++) {
   f = []
   j = 0
   
-  while (t > 1) {
+  while (t > 1 && j < Math.sqrt(i)) {
     if (t % ps[j]) j++
     else {
       t /= ps[j]
@@ -42,5 +44,7 @@ for (i = 2; i < 28123; i++) {
 
 28123 * 28124 / 2 - Object.keys(s).reduce(function (a, c) { return a + parseInt(c) }, 0)
 
+console.log(Date.now() - d)
+
 // answer: 4179871
-// runtime: 1477 ms
+// runtime: 762 ms
