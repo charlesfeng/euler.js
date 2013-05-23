@@ -6,8 +6,10 @@ var p = []
 
 for (i = 2; i < 10000; i++) {
   if (typeof p[i] !== 'undefined') continue
+  
   p[i] = true
   ps.push(i)
+  
   for (j = 2; j < Math.floor(10000 / i); j++)
     p[i * j] = false
 }
