@@ -1,6 +1,6 @@
 Working incrementally through the weekly challenges at [projecteuler.net](http://projecteuler.net/problems).
 
-Variable names in all solutions slightly obfuscated to prevent cheating.
+Variable names in all solutions slightly obfuscated to discourage cheating.
 
 ---
 
