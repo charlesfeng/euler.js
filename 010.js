@@ -15,7 +15,7 @@ while (c < 2000000) {
   c++
 }
 
-s
+module.exports = s
 
 // answer: 142913828922
-// runtime: 287 ms
+// runtime: 312 ms

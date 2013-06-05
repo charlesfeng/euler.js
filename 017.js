@@ -9,7 +9,7 @@ var o = [0, 3, 3, 5, 4, 4, 3, 5, 5, 4] // 0-9
   , st = t.reduce(function (p, d) { return p + d * 10 + so }, 0) // ∑20-99
   , sh = o.reduce(function (p, d) { return p + (d ? (d + 7) * 100 + 3 * 99 : 0) + so + sn + st }, 0) // ∑1-999
 
-sh + 11
+module.exports = sh + 11
 
 // answer: 21124
-// runtime: 10 ms
+// runtime: 13 ms

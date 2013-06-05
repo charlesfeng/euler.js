@@ -6,7 +6,7 @@ for (var i = t.length - 1, j; i--; )
   for (j = t[i].length; j--; )
     t[i][j] = t[i][j] + Math.max(t[i + 1][j], t[i + 1][j + 1])
 
-t[0][0]
+module.exports = t[0][0]
 
 // answer: 1074
-// runtime: 11 ms
+// runtime: 13 ms

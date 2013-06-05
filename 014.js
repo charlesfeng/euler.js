@@ -18,7 +18,7 @@ for (var i = 1; i < 1000000; i++) {
   }
 }
 
-j
+module.exports = j
 
 // answer: 837799
-// runtime: 494 ms
+// runtime: 503 ms

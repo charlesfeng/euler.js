@@ -16,7 +16,7 @@ for (i = 10; i--; ) {
   a.splice(c, 1)
 }
 
-p
+module.exports = p
 
 // answer: 2783915460
-// runtime: 11 ms
+// runtime: 13 ms

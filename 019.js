@@ -15,7 +15,7 @@ for (i = 1901; i <= 2000; i++) {
   }
 }
 
-n
+module.exports = n
 
 // answer: 171
-// runtime: 11 ms
+// runtime: 12 ms

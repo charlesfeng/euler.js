@@ -14,7 +14,7 @@ for (i = 1; i <= 100; i++) {
   c = 0
 }
 
-p.reduce(function (q, d) { return q + d }, 0)
+module.exports = p.reduce(function (q, d) { return q + d }, 0)
 
 // answer: 648
-// runtime: 11 ms
+// runtime: 14 ms

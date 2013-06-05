@@ -8,7 +8,7 @@ for (var m = [], t, i = 2; i <= 20; i++) {
   if (t !== 1) m.push(t)
 }
 
-m.reduce(function (p, c) { return p * c }, 1)
+module.exports = m.reduce(function (p, c) { return p * c }, 1)
 
 // answer: 232792560
-// runtime: 10 ms
+// runtime: 13 ms

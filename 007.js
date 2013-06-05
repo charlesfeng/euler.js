@@ -14,21 +14,22 @@ while (n < 10001) {
   c++
 }
 
-c - 1
+module.exports = c - 1
 
 // answer: 104743
-// runtime: 40 ms
+// runtime: 42 ms
 
-var a = []
-  , i = 2
 
-while (a.length < 10001) {
-  if (!a.some(function (c) { return !(i % c) }))
-    a.push(i)
-  i++
-}
+// var a = []
+//   , i = 2
 
-a[10000]
+// while (a.length < 10001) {
+//   if (!a.some(function (c) { return !(i % c) }))
+//     a.push(i)
+//   i++
+// }
 
-// answer: 104743
-// runtime: 2040 ms
+// a[10000]
+
+// // answer: 104743
+// // runtime: 2040 ms

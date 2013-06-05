@@ -7,7 +7,7 @@ for (var i = 0; i < 17; i++)
   for (var j = 0; j < 17; j++)
     p = Math.max(p, g[i][j] * g[i + 1][j] * g[i + 2][j] * g[i + 3][j], g[i][j] * g[i][j + 1] * g[i][j + 2] * g[i][j + 3], g[i][j] * g[i + 1][j + 1] * g[i + 2][j + 2] * g[i + 3][j + 3], g[i + 3][j] * g[i + 2][j + 1] * g[i + 1][j + 2] * g[i][j + 3])
     
-p
+module.exports = p
 
 // answer: 70600674
-// runtime: 11 ms
+// runtime: 13 ms

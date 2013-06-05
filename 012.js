@@ -21,7 +21,7 @@ while (d < 500) {
   d = Object.keys(a).reduce(function (p, c) { return p * (a[c] + 1) }, 1)
 }
 
-n * (n + 1) / 2
+module.exports = n * (n + 1) / 2
 
 // answer: 76576500
-// runtime: 268 ms
+// runtime: 271 ms

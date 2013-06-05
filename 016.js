@@ -11,7 +11,7 @@ for (var a = [1], i = 1, j; i <= 1000; i++) {
   }
 }
 
-a.reduce(function (p, c) { return p + c }, 0)
+module.exports = a.reduce(function (p, c) { return p + c }, 0)
 
 // answer: 1366
-// runtime: 23 ms
+// runtime: 26 ms

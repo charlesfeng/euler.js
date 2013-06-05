@@ -6,7 +6,7 @@ var num = '731671765313306249192251196744265747423553491949349698352031277450632
 for (var i = 0; i < num.length - 4; i++)
   p = Math.max(p, num.slice(i, i + 5).reduce(function (p, c) { return p * c }, 1))
   
-p
+module.exports = p
 
 // answer: 40824
-// runtime: 12 ms
+// runtime: 15 ms

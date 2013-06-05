@@ -12,7 +12,7 @@ while (b < a) {
   }
 }
 
-a
+module.exports = a
 
 // answer: 6857
-// runtime: 11 ms
+// runtime: 13 ms

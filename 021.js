@@ -39,7 +39,7 @@ for (i = 2; i < 10000; i++) {
   if (i !== t && m[t] && m[t] === i) s += i + t
 }
 
-s
+module.exports = s
 
 // answer: 31626
-// runtime: 42 ms
+// runtime: 44 ms

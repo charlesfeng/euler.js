@@ -8,7 +8,7 @@ while (i < 4000000) {
   j += i
 }
 
-sum
+module.exports = sum
 
 // answer: 4613732
-// runtime: 11 ms
+// runtime: 13 ms

@@ -13,7 +13,7 @@ for (var i = 49; i + 1; i--) {
 
 sum = c + sum
 
-parseInt(sum.slice(0, 10))
+module.exports = parseInt(sum.slice(0, 10))
 
 // answer: 5537376230
-// runtime: 11 ms
+// runtime: 14 ms
