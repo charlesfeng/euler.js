@@ -22,4 +22,4 @@ for (i = 2; i <= 28123; i++) {
 module.exports = 28123 * 28124 / 2 - Object.keys(s).reduce(function (a, c) { return a + parseInt(c) }, 0)
 
 // answer: 4179871
-// runtime: 1103 ms
+// runtime: 1002 ms
