@@ -93,7 +93,7 @@ BigInt.prototype = {
         , t = new BigInt(self)
       
       if (typeof n === 'number') {
-        for (var i = 0; i < this.n.length; i++) this.n[i] *= n
+        for (var i = 0; i < self.n.length; i++) self.n[i] *= n
           
       } else {
         if (!n.isBigInt) n = new BigInt(n)
