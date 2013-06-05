@@ -13,9 +13,9 @@ module.exports = function (n, ps) {
     , t = n
     , j = 0
   
-  if (!ps) ps = require('./primes')(n).ps
+  if (!ps) ps = require('./primes')(Math.floor(Math.sqrt(n))).ps
   
-  while (t > 1 && ps[j] <= Math.sqrt(n)) {
+  while (t > 1 && ps[j] <= Math.sqrt(t)) {
     if (t % ps[j]) j++
     else {
       t /= ps[j]
