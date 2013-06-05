@@ -2,6 +2,8 @@ Working incrementally through the weekly challenges at [projecteuler.net](http:/
 
 Variable names in all solutions slightly obfuscated to discourage cheating.
 
+Each solution's program can be executed with `run.js`, e.g. `node run 12`.
+
 ---
 
 © 2013 [Charles Feng](https://github.com/charlesfeng); all rights reserved.
