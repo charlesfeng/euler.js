@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=12
+// project euler: problem 12 (http://projecteuler.net/problem=12)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var factor = require('./modules/factor')
   , n = 0

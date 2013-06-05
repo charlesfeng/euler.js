@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=5
+// project euler: problem 5 (http://projecteuler.net/problem=5)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 for (var m = [], t, i = 2; i <= 20; i++) {
   t = i

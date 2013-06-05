@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=23
+// project euler: problem 23 (http://projecteuler.net/problem=23)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var primes = require('./modules/primes')
   , factor = require('./modules/factor')

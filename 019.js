@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=19
+// project euler: problem 19 (http://projecteuler.net/problem=19)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   , d = 1

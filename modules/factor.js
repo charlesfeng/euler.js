@@ -1,10 +1,7 @@
-// finds the prime factorization of a number using one of two methods
-//
-// parameters:
-//   n - the number
-//   ps (optional) - an array of prime numbers, or true to signal that we should use prime numbers
-//
-// returns: the pf as an object of { prime1: number1, ... }
+// prime factorization module
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 module.exports = function (n, ps) {
   if (n === 1) return { 1: 1 }
@@ -53,3 +50,11 @@ module.exports = function (n, ps) {
   
   return pf
 }
+
+// finds the prime factorization of a number using one of two methods
+//
+// parameters:
+//   n - the number
+//   ps (optional) - an array of prime numbers, or true to signal that we should use prime numbers
+//
+// returns: the pf as an object of { prime1: number1, ... }

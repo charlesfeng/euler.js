@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=21
+// project euler: problem 21 (http://projecteuler.net/problem=21)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var p = []
   , ps = []

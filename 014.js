@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=14
+// project euler: problem 14 (http://projecteuler.net/problem=14)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var c = [0, 1]
   , m = 0

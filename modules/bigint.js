@@ -1,4 +1,7 @@
-// bigint class
+// bigint module
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 var BigInt = function (n) {
   if (!n) n = 0

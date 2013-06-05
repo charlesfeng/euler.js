@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=10
+// project euler: problem 10 (http://projecteuler.net/problem=10)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 module.exports = require('./modules/primes')(2000000).ps.reduce(function (p, c) { return p + c }, 0)
 

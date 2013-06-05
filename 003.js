@@ -1,4 +1,7 @@
-// http://projecteuler.net/problem=3
+// project euler: problem 3 (http://projecteuler.net/problem=3)
+
+// (c) 2013 charles feng (https://github.com/charlesfeng)
+// shared under the MIT license (http://www.opensource.org/licenses/MIT)
 
 module.exports = Object.keys(require('./modules/factor')(600851475143)).slice(-1)[0]
 
