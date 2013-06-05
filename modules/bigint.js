@@ -9,6 +9,18 @@ var BigInt = function (n) {
   this.n = n.map(function (a) { return parseInt(a, 10) })
 }
 
+var _gt = function (a, b, equal) {
+  if (a.n.length > b.n.length) return true
+  else if (a.n.length < b.n.length) return false
+  else {
+    for (var i = a.n.length; i--; ) {
+      if (a.n[i] > b.n[i]) return true
+      if (a.n[i] < b.n[i]) return false
+    }
+    return equal
+  }
+}
+
 BigInt.prototype = {
     isBigInt: true
     
@@ -22,7 +34,27 @@ BigInt.prototype = {
   , toNumber: function () {
       return parseInt(this.n.slice(0).reverse().join(''), 10)
     }
-  
+    
+  // comparison
+  , gt: function (that) {
+      return _gt(this, that, false)
+    }
+  , gte: function (that) {
+      return _gt(this, that, true)
+    }
+  , lt: function (that) {
+      return _gt(that, this, false)
+    }
+  , lte: function (that) {
+      return _gt(that, this, true)
+    }
+  , eq: function (that) {
+      return _gt(this, that, -1) === -1
+    }
+  , ne: function (that) {
+      return _gt(this, that, -1) !== -1
+    }
+    
   // carry
   , carry: function () {
       for (var c = 0, i = 0; i < this.n.length; i++) {
