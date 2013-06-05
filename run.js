@@ -8,5 +8,5 @@ try {
   console.log('answer: ' + require('./' + n))
   console.log('runtime: ' + (Date.now() - d) + ' ms')
 } catch (e) {
-  console.log('' + e)
+  console.log(e)
 }
