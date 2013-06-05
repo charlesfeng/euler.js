@@ -16,3 +16,9 @@ module.exports = a
 
 // answer: 6857
 // runtime: 13 ms
+
+
+// module.exports = Object.keys(require('./modules/factor')(600851475143)).slice(-1)[0]
+
+// // answer: 6857
+// // runtime: 124 ms
