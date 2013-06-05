@@ -1,7 +1,7 @@
 // project euler: problem 15 (http://projecteuler.net/problem=15)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 var f = function (a) { return a ? a * f(a - 1) : 1 }
 

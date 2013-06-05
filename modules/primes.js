@@ -1,7 +1,7 @@
 // primes module
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 module.exports = function (n) {
   var p = []

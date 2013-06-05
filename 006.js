@@ -1,7 +1,7 @@
 // project euler: problem 6 (http://projecteuler.net/problem=6)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 for (var a = [], i = 1; i <= 100; i++)
   a.push(i)

@@ -1,7 +1,7 @@
 // project euler: problem 17 (http://projecteuler.net/problem=17)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 var o = [0, 3, 3, 5, 4, 4, 3, 5, 5, 4] // 0-9
   , n = [3, 6, 6, 8, 8, 7, 7, 9, 8, 8] // 10-19

@@ -1,7 +1,7 @@
 // project euler: problem 24 (http://projecteuler.net/problem=24)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 var t = 1000000
   , a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

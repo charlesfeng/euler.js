@@ -1,7 +1,7 @@
 // project euler: problem 4 (http://projecteuler.net/problem=4)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 module.exports = (function () {
   for (var p, i = 1998; i >= 200; i--) {

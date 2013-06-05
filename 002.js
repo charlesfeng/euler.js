@@ -1,7 +1,7 @@
 // project euler: problem 2 (http://projecteuler.net/problem=2)
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
-// shared under the MIT license (http://www.opensource.org/licenses/MIT)
+// shared under the mit license (http://www.opensource.org/licenses/mit)
 
 var i = 1, j = 2, sum = 0
 
