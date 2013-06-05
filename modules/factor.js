@@ -8,6 +8,8 @@
 // returns: the pf as an object of { prime1: number1, ... }
 
 module.exports = function (n, ps) {
+  if (n === 1) return { 1: 1 }
+  
   var pf = {}
     , f = []
     , t = n
