@@ -7,13 +7,13 @@
 //   p - an array s.t. p[n] tells us if n is prime
 //   ps - an array of prime numbers
 
-var primes = function (n) {
+module.exports = function (n) {
   var p = []
     , ps = []
     , i, j
 
   for (i = 2; i <= n; i++) {
-    if (typeof p[i] !== 'undefined') continue
+    if (p[i] === false) continue
     
     p[i] = true
     ps.push(i)
