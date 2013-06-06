@@ -34,6 +34,9 @@ BigInt.prototype = {
   , toString: function () {
       return this.n.slice(0).reverse().join('')
     }
+  , toKey: function () {
+      return this.n.slice(0).reverse().join('')
+    }
   , toNumber: function () {
       return parseInt(this.n.slice(0).reverse().join(''), 10)
     }
@@ -73,42 +76,42 @@ BigInt.prototype = {
   
   // arithmetic
   , add: function (n) {
-      var self = this
+      var r = new BigInt(this)
       
       if (typeof n === 'number') {
-        self.n[0] += n
+        r.n[0] += n
       
       } else {
         if (!n.isBigInt) n = new BigInt(n)
         
         n.toArray().forEach(function (n, i) {
-          self.n[i] = (self.n[i] || 0) + n
+          r.n[i] = (r.n[i] || 0) + n
         })
       }
       
-      return self.carry()
+      return r.carry()
     }
   , multiply: function (n) {
       var self = this
-        , t = new BigInt(self)
+        , r = new BigInt(self)
       
       if (typeof n === 'number') {
-        for (var i = 0; i < self.n.length; i++) self.n[i] *= n
+        for (var i = 0; i < r.n.length; i++) r.n[i] *= n
           
       } else {
         if (!n.isBigInt) n = new BigInt(n)
         
         n.toArray().forEach(function (n, i) {
-          if (i === 0) return self.multiply(n)
+          if (i === 0) return r = r.multiply(n)
           
-          for (var s = new BigInt(t), j = 0; j < i; j++)
+          for (var s = new BigInt(self), j = 0; j < i; j++)
             s.n.unshift(0)
           
-          self.add(s.multiply(n))
+          r = r.add(s.multiply(n))
         })
       }
       
-      return self.carry()
+      return r.carry()
     }
     
   // other operators
@@ -116,9 +119,9 @@ BigInt.prototype = {
       var t = new BigInt(this)
       
       for (var i = 0; i < n - 1; i++)
-        this.multiply(t)
+        t = t.multiply(this)
       
-      return this
+      return t
     }
 }
 
