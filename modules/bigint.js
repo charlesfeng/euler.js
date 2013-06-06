@@ -184,6 +184,7 @@ var _m = function (n1, n2) {
   var k = Math.floor(n1.length / 2)
   
   if (k === 0) return [n1[0] * n2[0]]
+  if (n1.every(function (a) { return !a }) || n2.every(function (a) { return !a })) return [0]
   
   var z0 = new BigInt(_m(n1.slice(0, k), n2.slice(0, k)))
     , z2 = new BigInt(_m(n1.slice(k), n2.slice(k)))
