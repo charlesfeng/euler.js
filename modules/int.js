@@ -3,12 +3,12 @@
 // (c) 2013 charles feng (https://github.com/charlesfeng)
 // shared under the mit license (http://www.opensource.org/licenses/mit)
 
-var Int = function (n) {
+var I = function (n) {
   if (n.isInt) this.n = n.n
   else this.n = n
 }
 
-Int.prototype = {
+I.prototype = {
     isInt: true
   
   // display
@@ -44,25 +44,25 @@ Int.prototype = {
   
   // arithmetic
   , add: function (n) {
-      return new Int(this.n + (typeof n === 'number' ? n : parseInt(n, 10)))
+      return new I(this.n + (typeof n === 'number' ? n : parseInt(n, 10)))
     }
   , sub: function (n) {
-      return new Int(this.n - n)
+      return new I(this.n - n)
     }
   , mul: function (n) {
-      return new Int(this.n * n)
+      return new I(this.n * n)
     }
     
   // other operators
   , neg: function () {
-      return new Int(-this.n)
+      return new I(-this.n)
     }
   , abs: function () {
-      return new Int(Math.abs(this.n))
+      return new I(Math.abs(this.n))
     }
   , pow: function (n) {
-      return new Int(Math.pow(this.n, n))
+      return new I(Math.pow(this.n, n))
     }
 }
 
-module.exports = Int
+module.exports = I
