@@ -6,16 +6,32 @@
 var BigInt = function (n) {
   if (!n) n = 0
   if (typeof n === 'number') n = '' + n
-  if (typeof n === 'string') n = n.split('').slice(0).reverse()
-  if (n.isBigInt) n = n.toArray()
+   
+  if (n.isBigInt) {
+    this.p = n.p
+    this.n = n.n.slice(0)
   
-  this.n = n.map(function (a) { return parseInt(a, 10) })
+  } else if (typeof n === 'string') {
+    this.p = n.slice(0, 1) !== '-' || !(n = n.slice(1))
+    this.n = n.split('').slice(0).reverse().map(function (a) { return parseInt(a, 10) })
+  
+  } else if (Array.isArray(n)) {
+    this.p = true
+    this.n = n.slice(0)
+    
+  } else {
+    throw 'invalid input'
+  }
 }
 
 var _gt = function (a, b, equal) {
-  if (a.n.length > b.n.length) return true
-  else if (a.n.length < b.n.length) return false
-  else {
+  if (a.n.length > b.n.length) {
+    return true
+  
+  } else if (a.n.length < b.n.length) {
+    return false
+  
+  } else {
     for (var i = a.n.length; i--; ) {
       if (a.n[i] > b.n[i]) return true
       if (a.n[i] < b.n[i]) return false
@@ -24,21 +40,33 @@ var _gt = function (a, b, equal) {
   }
 }
 
+var _as = function (r, n, pm) {
+  if (typeof n === 'number') {
+    r.n[0] = pm(r.n[0], n)
+  
+  } else {
+    if (!n.isBigInt) n = new BigInt(n)
+    
+    n.n.forEach(function (n, i) {
+      r.n[i] = pm(r.n[i] || 0, n)
+    })
+  }
+  
+  return r.carry()
+}
+
 BigInt.prototype = {
     isBigInt: true
     
   // display
-  , toArray: function () {
-      return this.n.slice(0)
-    }
   , toString: function () {
-      return this.n.slice(0).reverse().join('')
+      return (this.p ? '' : '-') + this.n.slice(0).reverse().join('')
     }
   , toKey: function () {
-      return this.n.slice(0).reverse().join('')
+      return (this.p ? '' : '-') + this.n.slice(0).reverse().join('')
     }
   , toNumber: function () {
-      return parseInt(this.n.slice(0).reverse().join(''), 10)
+      return parseInt((this.p ? '' : '-') + this.n.slice(0).reverse().join(''), 10)
     }
     
   // comparison
@@ -65,31 +93,44 @@ BigInt.prototype = {
   , carry: function () {
       for (var c = 0, i = 0; i < this.n.length; i++) {
         this.n[i] += c
-        c = Math.floor(this.n[i] / 10)
-        this.n[i] %= 10
+        
+        if (this.n[i] > 0) {
+          c = Math.floor(this.n[i] / 10)
+          this.n[i] %= 10
+        
+        } else {
+          c = Math.floor(this.n[i] / 10)
+          this.n[i] -= 10 * c
+        }
       }
       
-      if (c) this.n = this.n.concat(('' + c).split('').reverse().map(function (a) { return parseInt(a, 10) }))
+      if (c) {
+        if (c > 0) {
+          this.n = this.n.concat(('' + c).split('').reverse().map(function (a) { return parseInt(a, 10) }))
+        
+        } else {
+          this.n = new BigInt('' + (-c) + Array(this.n.length + 1).join('0')).subtract(new BigInt(this.n)).toArray()
+          this.p = !this.p
+        }
+      }
+      
+      while (this.n.length > 1 && this.n.slice(-1)[0] === 0) this.n.splice(-1)
       
       return this
     }
   
   // arithmetic
   , add: function (n) {
-      var r = new BigInt(this)
+      if (typeof n === 'number' && this.p === !(n > 0)) n = -n
+      if (typeof n !== 'number' && this.p !== n.p) return this.subtract(new BigInt(n).neg())
       
-      if (typeof n === 'number') {
-        r.n[0] += n
+      return _as(new BigInt(this), n, function (a, b) { return a + b })
+    }
+  , subtract: function (n) {
+      if (typeof n === 'number' && this.p === !(n > 0)) n = -n
+      if (typeof n !== 'number' && this.p !== n.p) return this.add(new BigInt(n).neg())
       
-      } else {
-        if (!n.isBigInt) n = new BigInt(n)
-        
-        n.toArray().forEach(function (n, i) {
-          r.n[i] = (r.n[i] || 0) + n
-        })
-      }
-      
-      return r.carry()
+      return _as(new BigInt(this), n, function (a, b) { return a - b })
     }
   , multiply: function (n) {
       var self = this
@@ -101,12 +142,9 @@ BigInt.prototype = {
       } else {
         if (!n.isBigInt) n = new BigInt(n)
         
-        n.toArray().forEach(function (n, i) {
+        n.n.forEach(function (n, i) {
           if (i === 0) return r = r.multiply(n)
-          
-          for (var s = new BigInt(self), j = 0; j < i; j++)
-            s.n.unshift(0)
-          
+          for (var s = new BigInt(self), j = 0; j < i; j++) s.n.unshift(0)
           r = r.add(s.multiply(n))
         })
       }
@@ -115,12 +153,19 @@ BigInt.prototype = {
     }
     
   // other operators
+  , neg: function () {
+      var t = new BigInt(this)
+      t.p = !t.p
+      return t
+    }
+  , abs: function () {
+      var t = new BigInt(this)
+      t.p = true
+      return t
+    }
   , pow: function (n) {
       var t = new BigInt(this)
-      
-      for (var i = 0; i < n - 1; i++)
-        t = t.multiply(this)
-      
+      for (var i = 0; i < n - 1; i++) t = t.multiply(this)
       return t
     }
 }
