@@ -3,6 +3,7 @@
 // (c) 2013 charles feng (https://github.com/charlesfeng)
 // shared under the mit license (http://www.opensource.org/licenses/mit)
 
+// constructor
 var BigInt = function (n, p) {
   if (!n) n = 0
   if (typeof n === 'number') n = '' + n
@@ -24,6 +25,7 @@ var BigInt = function (n, p) {
   }
 }
 
+// helper function for comparison operators
 var _gt = function (a, b, equal) {
   if (a.n.length > b.n.length) {
     return true
@@ -40,6 +42,7 @@ var _gt = function (a, b, equal) {
   }
 }
 
+// helper function for addition/subtraction operators
 var _as = function (r, n, pm) {
   if (typeof n === 'number') {
     r.n[0] = pm(r.n[0], n)
@@ -55,6 +58,7 @@ var _as = function (r, n, pm) {
   return r.carry()
 }
 
+// methods/operators
 BigInt.prototype = {
     isBigInt: true
     
