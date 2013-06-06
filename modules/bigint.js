@@ -63,7 +63,7 @@ B.prototype = {
       for (var c = 0, i = 0; i < this.n.length; i++) {
         this.n[i] += c
         
-        if (this.n[i] > 10) {
+        if (this.n[i] >= 10) {
           c = Math.floor(this.n[i] / 10)
           this.n[i] %= 10
         
