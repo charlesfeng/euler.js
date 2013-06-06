@@ -1,4 +1,4 @@
-// finds the largest power of a base less than a number
+// logfloor module
 
 // (c) 2013 charles feng (https://github.com/charlesfeng)
 // shared under the mit license (http://www.opensource.org/licenses/mit)
@@ -36,6 +36,8 @@ module.exports = function (n, b) {
   }
 }
 
+// finds the largest power of a base less than a number
+//
 // parameters:
 //   n - the number (as a number, string, or BigInt)
 //   b - the base (as a number, string, or BigInt)
