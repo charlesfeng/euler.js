@@ -3,7 +3,7 @@
 // (c) 2013 charles feng (https://github.com/charlesfeng)
 // shared under the mit license (http://www.opensource.org/licenses/mit)
 
-var BigInt = function (n) {
+var BigInt = function (n, p) {
   if (!n) n = 0
   if (typeof n === 'number') n = '' + n
    
@@ -16,7 +16,7 @@ var BigInt = function (n) {
     this.n = n.split('').reverse().map(function (a) { return parseInt(a, 10) })
   
   } else if (Array.isArray(n)) {
-    this.p = true
+    this.p = typeof p !== 'undefined' ? p : true
     this.n = n.slice(0)
     
   } else {
@@ -114,7 +114,9 @@ BigInt.prototype = {
         }
       }
       
-      while (this.n.length > 1 && this.n.slice(-1)[0] === 0) this.n.splice(-1)
+      while (this.n.length > 1 && this.n.slice(-1)[0] === 0) {
+        this.n.splice(-1)
+      }
       
       return this
     }
@@ -137,14 +139,20 @@ BigInt.prototype = {
         , r = new BigInt(self)
       
       if (typeof n === 'number') {
-        for (var i = 0; i < r.n.length; i++) r.n[i] *= n
+        for (var i = 0; i < r.n.length; i++) {
+          r.n[i] *= n
+        }
           
       } else {
         if (!n.isBigInt) n = new BigInt(n)
         
         n.n.forEach(function (n, i) {
           if (i === 0) return r = r.multiply(n)
-          for (var s = new BigInt(self), j = 0; j < i; j++) s.n.unshift(0)
+          
+          for (var s = new BigInt(self), j = 0; j < i; j++) {
+            s.n.unshift(0)
+          }
+          
           r = r.add(s.multiply(n))
         })
       }
@@ -154,18 +162,18 @@ BigInt.prototype = {
     
   // other operators
   , neg: function () {
-      var t = new BigInt(this)
-      t.p = !t.p
-      return t
+      return new BigInt(this.n, !this.p)
     }
   , abs: function () {
-      var t = new BigInt(this)
-      t.p = true
-      return t
+      return new BigInt(this.n, true)
     }
   , pow: function (n) {
       var t = new BigInt(this)
-      for (var i = 0; i < n - 1; i++) t = t.multiply(this)
+      
+      for (var i = 0; i < n - 1; i++) {
+        t = t.multiply(this)
+      }
+      
       return t
     }
 }
