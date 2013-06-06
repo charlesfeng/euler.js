@@ -6,7 +6,7 @@
 var BigInt = function (n, p) {
   if (!n) n = 0
   if (typeof n === 'number') n = '' + n
-   
+  
   if (n.isBigInt) {
     this.p = n.p
     this.n = n.n.slice(0)
@@ -18,7 +18,7 @@ var BigInt = function (n, p) {
   } else if (Array.isArray(n)) {
     this.p = typeof p !== 'undefined' ? p : true
     this.n = n.slice(0)
-    
+  
   } else {
     throw 'invalid input'
   }
@@ -26,7 +26,7 @@ var BigInt = function (n, p) {
 
 BigInt.prototype = {
     isBigInt: true
-    
+  
   // display
   , toString: function () {
       return (this.p ? '' : '-') + this.n.slice(0).reverse().join('')
@@ -37,7 +37,7 @@ BigInt.prototype = {
   , toNumber: function () {
       return parseInt((this.p ? '' : '-') + this.n.slice(0).reverse().join(''), 10)
     }
-    
+  
   // comparison
   , gt: function (that) {
       return _gt(this, that, false)
@@ -57,7 +57,7 @@ BigInt.prototype = {
   , ne: function (that) {
       return _gt(this, that, -1) !== -1
     }
-    
+  
   // carry
   , carry: function () {
       for (var c = 0, i = 0; i < this.n.length; i++) {
@@ -114,17 +114,17 @@ BigInt.prototype = {
         for (var i = 0; i < r.n.length; i++) {
           r.n[i] *= n
         }
-          
+        
       } else {
         if (!n.isBigInt) n = new BigInt(n)
-  
+        
         r.n = _m(r.n.slice(0), n.n.slice(0))
         r.p = (r.p === n.p)
       }
       
       return r.carry()
     }
-    
+  
   // other operators
   , neg: function () {
       return new BigInt(this.n, !this.p)
