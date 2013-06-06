@@ -3,7 +3,6 @@
 // (c) 2013 charles feng (https://github.com/charlesfeng)
 // shared under the mit license (http://www.opensource.org/licenses/mit)
 
-// constructor
 var BigInt = function (n, p) {
   if (!n) n = 0
   if (typeof n === 'number') n = '' + n
@@ -25,7 +24,6 @@ var BigInt = function (n, p) {
   }
 }
 
-// methods/operators
 BigInt.prototype = {
     isBigInt: true
     
