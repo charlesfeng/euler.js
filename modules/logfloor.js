@@ -13,7 +13,7 @@ module.exports = function (n, b) {
   ps = {}
   p = new B(1)
   v = new B(b)
-    
+  
   while (v.lte(n)) {
     ps[p.toKey()] = new B(v)
     v = v.pow(2)
