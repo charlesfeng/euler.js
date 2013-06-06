@@ -5,7 +5,7 @@
 
 var BigInt = require('./modules/bigint')
 
-for (var n = new BigInt(1), i = 2; i <= 100; i++) n.multiply(i)
+for (var n = new BigInt(1), i = 2; i <= 100; i++) n = n.multiply(i)
   
 module.exports = n.toArray().reduce(function (p, c) { return p + c }, 0)
 
