@@ -46,10 +46,10 @@ Int.prototype = {
   , add: function (n) {
       return new Int(this.n + (typeof n === 'number' ? n : parseInt(n, 10)))
     }
-  , subtract: function (n) {
+  , sub: function (n) {
       return new Int(this.n - n)
     }
-  , multiply: function (n) {
+  , mul: function (n) {
       return new Int(this.n * n)
     }
     

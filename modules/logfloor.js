@@ -17,16 +17,16 @@ module.exports = function (n, b) {
   while (v.lte(n)) {
     ps[p.toKey()] = new B(v)
     v = v.pow(2)
-    p = p.multiply(2)
+    p = p.mul(2)
   }
   
   p = new B(0)
   v = new B(1)
   
   Object.keys(ps).reverse().forEach(function (c) {
-    if (v.multiply(ps[c]).lte(n)) {
+    if (v.mul(ps[c]).lte(n)) {
       p = p.add(c)
-      v = v.multiply(ps[c])
+      v = v.mul(ps[c])
     }
   })
 
