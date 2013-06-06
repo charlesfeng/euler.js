@@ -25,39 +25,6 @@ var BigInt = function (n, p) {
   }
 }
 
-// helper function for comparison operators
-var _gt = function (a, b, equal) {
-  if (a.n.length > b.n.length) {
-    return true
-  
-  } else if (a.n.length < b.n.length) {
-    return false
-  
-  } else {
-    for (var i = a.n.length; i--; ) {
-      if (a.n[i] > b.n[i]) return true
-      if (a.n[i] < b.n[i]) return false
-    }
-    return equal
-  }
-}
-
-// helper function for addition/subtraction operators
-var _as = function (r, n, pm) {
-  if (typeof n === 'number') {
-    r.n[0] = pm(r.n[0], n)
-  
-  } else {
-    if (!n.isBigInt) n = new BigInt(n)
-    
-    n.n.forEach(function (n, i) {
-      r.n[i] = pm(r.n[i] || 0, n)
-    })
-  }
-  
-  return r.carry()
-}
-
 // methods/operators
 BigInt.prototype = {
     isBigInt: true
@@ -98,13 +65,16 @@ BigInt.prototype = {
       for (var c = 0, i = 0; i < this.n.length; i++) {
         this.n[i] += c
         
-        if (this.n[i] > 0) {
+        if (this.n[i] > 10) {
           c = Math.floor(this.n[i] / 10)
           this.n[i] %= 10
         
-        } else {
+        } else if (this.n[i] < 0) {
           c = Math.floor(this.n[i] / 10)
           this.n[i] -= 10 * c
+        
+        } else {
+          c = 0
         }
       }
       
@@ -113,7 +83,7 @@ BigInt.prototype = {
           this.n = this.n.concat(('' + c).split('').reverse().map(function (a) { return parseInt(a, 10) }))
         
         } else {
-          this.n = new BigInt('' + (-c) + Array(this.n.length + 1).join('0')).subtract(new BigInt(this.n)).toArray()
+          this.n = new BigInt('' + (-c) + Array(this.n.length + 1).join('0')).subtract(new BigInt(this.n)).n.slice(0)
           this.p = !this.p
         }
       }
@@ -149,16 +119,9 @@ BigInt.prototype = {
           
       } else {
         if (!n.isBigInt) n = new BigInt(n)
-        
-        n.n.forEach(function (n, i) {
-          if (i === 0) return r = r.multiply(n)
-          
-          for (var s = new BigInt(self), j = 0; j < i; j++) {
-            s.n.unshift(0)
-          }
-          
-          r = r.add(s.multiply(n))
-        })
+  
+        r.n = _m(r.n.slice(0), n.n.slice(0))
+        r.p = (r.p === n.p)
       }
       
       return r.carry()
@@ -180,6 +143,58 @@ BigInt.prototype = {
       
       return t
     }
+}
+
+// helper function for comparison operators
+var _gt = function (a, b, equal) {
+  if (a.n.length > b.n.length) {
+    return true
+  
+  } else if (a.n.length < b.n.length) {
+    return false
+  
+  } else {
+    for (var i = a.n.length; i--; ) {
+      if (a.n[i] > b.n[i]) return true
+      if (a.n[i] < b.n[i]) return false
+    }
+    return equal
+  }
+}
+
+// helper function for addition/subtraction operators
+var _as = function (r, n, pm) {
+  if (typeof n === 'number') {
+    r.n[0] = pm(r.n[0], n)
+  
+  } else {
+    if (!n.isBigInt) n = new BigInt(n)
+    
+    n.n.forEach(function (n, i) {
+      r.n[i] = pm(r.n[i] || 0, n)
+    })
+  }
+  
+  return r.carry()
+}
+
+// helper function for multiplication operator
+var _m = function (n1, n2) {
+  if (n1.length > n2.length) n2 = n2.concat(Array(n1.length - n2.length + 1).join('0').split('').map(function () { return 0 }))
+  else if (n2.length > n1.length) n1 = n1.concat(Array(n2.length - n1.length + 1).join('0').split('').map(function () { return 0 }))
+  
+  var k = Math.floor(n1.length / 2)
+  
+  if (k === 0) return [n1[0] * n2[0]]
+  
+  var z0 = new BigInt(_m(n1.slice(0, k), n2.slice(0, k)))
+    , z2 = new BigInt(_m(n1.slice(k), n2.slice(k)))
+    , z1 = new BigInt(_m(new BigInt(n1.slice(0, k)).add(n1.slice(k)).n, new BigInt(n2.slice(0, k)).add(n2.slice(k)).n)).subtract(z0).subtract(z2)
+  
+  z1.n = Array(k + 1).join('0').split('').map(function () { return 0 }).concat(z1.n)
+  z2.n = Array(2 * k + 1).join('0').split('').map(function () { return 0 }).concat(z2.n)
+  
+  return z0.add(z1).add(z2).n
 }
 
 module.exports = BigInt
