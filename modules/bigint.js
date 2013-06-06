@@ -13,7 +13,7 @@ var BigInt = function (n) {
   
   } else if (typeof n === 'string') {
     this.p = n.slice(0, 1) !== '-' || !(n = n.slice(1))
-    this.n = n.split('').slice(0).reverse().map(function (a) { return parseInt(a, 10) })
+    this.n = n.split('').reverse().map(function (a) { return parseInt(a, 10) })
   
   } else if (Array.isArray(n)) {
     this.p = true
