@@ -29,7 +29,7 @@ module.exports = function (n, b) {
       v = v.mul(ps[c])
     }
   })
-
+  
   return {
       p: p.toKey()
     , v: v.toKey()
